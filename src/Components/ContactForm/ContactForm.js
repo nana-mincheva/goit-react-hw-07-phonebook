@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getContacts } from "../../redux/contacts/selector";
 function ContactForm() {
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
@@ -15,8 +15,8 @@ function ContactForm() {
         setName(evt.target.value);
         break;
 
-      case "number":
-        setNumber(evt.target.value);
+      case "phone":
+        setPhone(evt.target.value);
         break;
       default:
         return;
@@ -32,13 +32,13 @@ function ContactForm() {
     ) {
       return alert("This contact has already been added to the list");
     }
-    dispatch(operations.addContacts({ name, number }));
+    dispatch(operations.addContacts({ name, phone }));
     resetForm();
   };
 
   const resetForm = () => {
     setName("");
-    setNumber("");
+    setPhone("");
   };
 
   return (
@@ -62,8 +62,8 @@ function ContactForm() {
           <input
             className={s.input}
             type="tel"
-            value={number}
-            name="number"
+            value={phone}
+            name="phone"
             placeholder="Number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             onChange={inputChange}

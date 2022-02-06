@@ -16,11 +16,11 @@ const ContactList = () => {
   return (
     <div className={s.listWrapper}>
       <ul className={s.list}>
-        {getContacts.map(({ name, number, id }) => {
+        {getContacts.map(({ name, phone, id }) => {
           return (
             <li className={s.item} key={id}>
               <p className={s.text}>{name}:</p>
-              <p className={s.text}>{number}</p>
+              <p className={s.text}>{phone}</p>
               <button
                 className={s.button}
                 type="button"
@@ -40,7 +40,7 @@ ContactList.propTypes = {
   getContacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      number: PropTypes.string,
+      phone: PropTypes.string,
       id: PropTypes.string,
     })
   ),
